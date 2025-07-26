@@ -34,16 +34,17 @@ workflows:
         ignore_failure: true
       - name: Flutter build ipa
         script: |
-          flutter build ipa --debug --no-codesign
+          # Build release IPA for distribution
+          flutter build ipa --release --no-codesign
           # Create proper IPA from app bundle
           cd build/ios/iphoneos
           mkdir -p Payload
           cp -r Runner.app Payload/
-          zip -r ../../../Runner.ipa Payload/
+          zip -r ../../../Runner_release.ipa Payload/
           rm -rf Payload
     artifacts:
       - build/ios/ipa/*.ipa
-      - Runner.ipa
+      - Runner_release.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
