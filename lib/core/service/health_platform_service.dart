@@ -1,5 +1,4 @@
 import 'package:fitness_flutter/data/fitness_data.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HealthPlatformService {

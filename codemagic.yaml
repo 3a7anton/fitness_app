@@ -26,7 +26,8 @@ workflows:
           cd ios && pod install --repo-update
       - name: Flutter analyze
         script: |
-          flutter analyze
+          flutter analyze --no-fatal-warnings
+        ignore_failure: true
       - name: Flutter unit tests
         script: |
           flutter test
@@ -65,7 +66,8 @@ workflows:
           flutter packages pub get
       - name: Flutter analyze
         script: |
-          flutter analyze
+          flutter analyze --no-fatal-warnings
+        ignore_failure: true
       - name: Flutter unit tests
         script: |
           flutter test

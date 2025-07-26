@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_flutter/core/const/color_constants.dart';
 import 'package:fitness_flutter/core/service/notification_service.dart';
 import 'package:fitness_flutter/core/service/fitness_service.dart';
 import 'package:fitness_flutter/core/service/health_platform_service.dart';
 import 'package:fitness_flutter/core/service/location_tracking_service.dart';
-import 'package:fitness_flutter/screens/onboarding/page/onboarding_page.dart';
 import 'package:fitness_flutter/screens/tab_bar/page/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

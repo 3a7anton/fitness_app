@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_flutter/core/extensions/exceptions.dart';
-import 'package:flutter/services.dart';
 
 class AuthService {
   static final FirebaseAuth auth = FirebaseAuth.instance;

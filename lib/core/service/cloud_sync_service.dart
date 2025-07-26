@@ -89,7 +89,7 @@ class CloudSyncService {
           .collection('gamification')
           .doc('badges')
           .set({
-        'unlockedBadges': badges.map((badge) => badge.toJson()).toList(),
+        'unlockedBadges': badges,
         'lastUpdated': FieldValue.serverTimestamp(),
       });
 
