@@ -29,8 +29,15 @@ workflows:
       - name: Flutter build ipa
         script: |
           flutter build ipa --debug --no-codesign
+          # Create proper IPA from app bundle
+          cd build/ios/iphoneos
+          mkdir -p Payload
+          cp -r Runner.app Payload/
+          zip -r ../../../Runner.ipa Payload/
+          rm -rf Payload
     artifacts:
       - build/ios/ipa/*.ipa
+      - Runner.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:

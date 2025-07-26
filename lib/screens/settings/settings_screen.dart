@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_flutter/core/const/color_constants.dart';
 import 'package:fitness_flutter/core/const/path_constants.dart';
@@ -10,10 +8,8 @@ import 'package:fitness_flutter/screens/edit_account/edit_account_screen.dart';
 import 'package:fitness_flutter/screens/reminder/page/reminder_page.dart';
 import 'package:fitness_flutter/screens/settings/bloc/bloc/settings_bloc.dart';
 import 'package:fitness_flutter/screens/sign_in/page/sign_in_page.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -88,16 +84,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => ReminderPage()));
               },
             ),
-            if (!kIsWeb)
-              SettingsContainer(
-                child: Text(TextConstants.rateUsOn + '${Platform.isIOS ? 'App store' : 'Play market'}',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
-                onTap: () {
-                  return launch(Platform.isIOS ? 'https://www.apple.com/app-store/' : 'https://play.google.com/store');
-                },
-              ),
-            SettingsContainer(
-                onTap: () => launch('https://perpet.io/'), child: Text(TextConstants.terms, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500))),
             SettingsContainer(
                 child: Text(TextConstants.signOut, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
                 onTap: () {
@@ -107,26 +93,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     MaterialPageRoute(builder: (_) => SignInPage()),
                   );
                 }),
-            SizedBox(height: 15),
-            Text(TextConstants.joinUs, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-            SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                    onPressed: () => launch('https://www.facebook.com/perpetio/'),
-                    style: TextButton.styleFrom(shape: CircleBorder(), backgroundColor: Colors.white, elevation: 1),
-                    child: Image.asset(PathConstants.facebook)),
-                TextButton(
-                    onPressed: () => launch('https://www.instagram.com/perpetio/'),
-                    style: TextButton.styleFrom(shape: CircleBorder(), backgroundColor: Colors.white, elevation: 1),
-                    child: Image.asset(PathConstants.instagram)),
-                TextButton(
-                    onPressed: () => launch('https://twitter.com/perpetio'),
-                    style: TextButton.styleFrom(shape: CircleBorder(), backgroundColor: Colors.white, elevation: 1),
-                    child: Image.asset(PathConstants.twitter)),
-              ],
-            )
           ]),
         ),
       ),
