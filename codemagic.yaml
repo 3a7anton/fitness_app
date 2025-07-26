@@ -15,7 +15,12 @@ workflows:
           rm -rf ios/.symlinks
       - name: Get Flutter packages
         script: |
+          flutter clean
           flutter packages pub get
+      - name: Generate iOS configuration
+        script: |
+          flutter precache --ios
+          flutter build ios --config-only
       - name: Install pods with repo update
         script: |
           cd ios && pod install --repo-update
